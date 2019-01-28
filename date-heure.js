@@ -34,13 +34,9 @@ function afficheHeure() {
         date = new Date();
     // boucle sur les infos à afficher
     for (i = 0; i < nb; i += 1) {
-        dTemp = new Date();
         optionsDate.timeZone = data[i].utc;
         document.getElementById(data[i].id).innerHTML = date.toLocaleString('fr-FR', optionsDate);
     }
-
-    optionsDate.timeZone = "UTC";
-    document.getElementById("londres").innerHTML = date.toLocaleString("fr-FR", optionsDate);
 }
 // lance affichage toutes les prochaines secondes
 setInterval(afficheHeure, 1000);
