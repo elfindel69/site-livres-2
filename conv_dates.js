@@ -7,23 +7,29 @@ var optionsDate = {
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
-    timeZoneName: 'short'
+    timeZoneName: 'short',
+    timeZone: 'UTC'
 };
+
+const TOGTCYEAR = 8200;
+const TOMIGYEAR = 10000;
 
 // Fonction d'affichage
 function afficheHeure() {
-    let i,
-        nb = data.length,
-        date = new Date();
-    // boucle sur les infos à afficher
-    for (i = 0; i < nb; i += 1) {
-        dTemp = new Date();
-        optionsDate.timeZone = data[i].utc;
-        document.getElementById(data[i].id).innerHTML = date.toLocaleString('fr-FR', optionsDate);
-    }
+    let date = new Date();
+    document.getElementById("UTC").innerHTML = date.toLocaleString("fr-FR", optionsDate);
+    let timestamp = toTimeStamp(date);
+    var GTCyear = Math.floor(timestamp / 2901600) + TOGTCYEAR;
+    var GTCDate = year;
+    document.getElementById("GTC").innerHTML = year;
 
-    optionsDate.timeZone = "UTC";
-    document.getElementById("londres").innerHTML = date.toLocaleString("fr-FR", optionsDate);
+
+
+}
+
+function toTimeStamp(now) {
+    const ZEROTIME = new Date("1 January 2011");
+    return new Number((now.getTime() - ZEROTIME.getTime()) / 1000).toFixed(0);
 }
 // lance affichage toutes les prochaines secondes
 setInterval(afficheHeure, 1000);
