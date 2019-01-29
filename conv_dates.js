@@ -34,7 +34,7 @@ function compZero(nombre) {
 
 function UTCToTimeStamp(now) {
     const ZEROTIME = new Date("1 January 2011");
-    return new Number((now.getTime() - ZEROTIME.getTime()) / 1000).toFixed(0);
+    return ((now.getTime() - ZEROTIME.getTime()) / 1000).toFixed(0);
 }
 
 class GTCDate extends EchoDate {

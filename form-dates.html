@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>TP : Un formulaire interactif</title>
+    <script type="text/javascript" src="form_dates.js"></script>
+
+</head>
+
+
+<body>
+
+
+    <form id="myForm">
+
+        <label for="dateUTC">Date UTC :</label>
+        <input name="dateUTC" id="dateUTC" type="datetime-local" value="-99999" />
+        <br /><br />
+
+        <label for="dateGTC">Date GTC :</label>
+        <input name="dateGTC" id="dateGTC" type="text" placeholder="1/01/10211 00:00:00" value="-99999" />
+        <br /><br />
+
+        <label for="dateCode">Date GTC :</label>
+        <input name="dateCode" id="dateCode" type="text" placeholder="20211.001" value="-99999" />
+        <br /><br />
+
+        <label for="timeCode">Date GTC :</label>
+        <input name="timeCode" id="timeCode" type="text" placeholder="20211001.00000" value="-99999" />
+        <br /><br />
+
+        <input type="submit" value="send" /> <input type="reset" value="reset" />
+    </form>
+    <br/><br/>
+    <ul>
+        <li>
+            Temps UTC
+            <div id="UTC">00</div>
+        </li>
+        <li>
+            Temps GTC
+            <div id="GTC"></div>
+        </li>
+        <li>
+            Datacode
+            <div id="DTC"></div>
+        </li>
+        <li>
+            Timecode
+            <div id="TMC"></div>
+        </li>
+    </ul>
+
+</body>
+
+
+</html>
