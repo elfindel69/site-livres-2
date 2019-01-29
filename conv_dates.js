@@ -23,8 +23,10 @@ class EchoDate {
         minute = 0;
         second = 0;
     }
-
 }
+
+const MIGDateToTC = (MIGYear, days) => { return MIGYear + '.' + days; };
+const MIGDateToDC = (MIGYear, days, timestamp) => { return MIGYear + '' + days + '.' + timestamp; };
 
 class GTCDate extends EchoDate {
     constructor() {
@@ -104,13 +106,14 @@ function afficheHeure() {
     let dateGTC = UTCDateToGTCDate(date);
     document.getElementById("GTC").innerHTML = dateGTC.getGTCDateString();
     var MIGYear = dateGTC.year + GTC_TO_MIG_YEAR;
-    document.getElementById("DTC").innerHTML = MIGYear + '.' + days;
-    document.getElementById("TMC").innerHTML = MIGYear + '' + days + '.' + timestamp;
+    document.getElementById("DTC").innerHTML = MIGDateToTC;
+    document.getElementById("TMC").innerHTML = MIGDateToDC;
 }
 
 function compZero(nombre) {
     return nombre < 10 ? '0' + nombre : nombre;
 }
+
 
 function UTCToTimeStamp(now) {
     const ZEROTIME = new Date("1 January 2011");
