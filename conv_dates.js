@@ -16,22 +16,31 @@ const GTC_TO_MIG_YEAR = 10000;
 
 class EchoDate {
     constructor() {
-        days = 0;
-        year = 0;
-        timestamp = 0;
-        hour = 0;
-        minute = 0;
-        second = 0;
+        this.days = 0;
+        this.year = 0;
+        this.timestamp = 0;
+        this.hour = 0;
+        this.minute = 0;
+        this.second = 0;
     }
 }
 
 const MIGDateToTC = (MIGYear, days) => { return MIGYear + '.' + days; };
 const MIGDateToDC = (MIGYear, days, timestamp) => { return MIGYear + '' + days + '.' + timestamp; };
 
+function compZero(nombre) {
+    return nombre < 10 ? '0' + nombre : nombre;
+}
+
+function UTCToTimeStamp(now) {
+    const ZEROTIME = new Date("1 January 2011");
+    return new Number((now.getTime() - ZEROTIME.getTime()) / 1000).toFixed(0);
+}
+
 class GTCDate extends EchoDate {
     constructor() {
         super();
-        type = 'GTC';
+        this.type = 'GTC';
     }
 
     daysToGTCDate(days) {
@@ -80,13 +89,13 @@ class GTCDate extends EchoDate {
     }
 
     getGTCDateString() {
-        return daysToGTCDate(this.days) + ' ' + GTCyear + ' à ' + compZero(hour) + ":" + compZero(minute) + ":" + compZero(second) + " GTC";
+        return this.daysToGTCDate(this.days) + ' ' + this.year + ' à ' + compZero(this.hour) + ":" + compZero(this.minute) + ":" + compZero(this.second) + " GTC";
     }
 }
 
 function UTCDateToGTCDate(UTCdate) {
     let date = new GTCDate();
-    let timestamp = UTCtoTimeStamp(UTCdate);
+    let timestamp = UTCToTimeStamp(UTCdate);
     date.year = Math.floor(timestamp / 34725600) + UTC_TO_GTC_YEAR + 1;
     timestamp = timestamp % 34725600;
     date.days = Math.floor(timestamp / 93600);
@@ -106,20 +115,9 @@ function afficheHeure() {
     let dateGTC = UTCDateToGTCDate(date);
     document.getElementById("GTC").innerHTML = dateGTC.getGTCDateString();
     var MIGYear = dateGTC.year + GTC_TO_MIG_YEAR;
-    document.getElementById("DTC").innerHTML = MIGDateToTC;
-    document.getElementById("TMC").innerHTML = MIGDateToDC;
+    document.getElementById("DTC").innerHTML = MIGDateToTC(MIGYear, dateGTC.days);
+    document.getElementById("TMC").innerHTML = MIGDateToDC(MIGYear, dateGTC.days, dateGTC.timestamp);
 }
-
-function compZero(nombre) {
-    return nombre < 10 ? '0' + nombre : nombre;
-}
-
-
-function UTCToTimeStamp(now) {
-    const ZEROTIME = new Date("1 January 2011");
-    return new Number((now.getTime() - ZEROTIME.getTime()) / 1000).toFixed(0);
-}
-
 
 // lance affichage toutes les prochaines secondes
 setInterval(afficheHeure, 1000);
