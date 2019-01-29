@@ -16,12 +16,12 @@ const GTC_TO_MIG_YEAR = 10000;
 
 class EchoDate {
     constructor() {
-        this.days = 0;
-        this.year = 0;
-        this.timestamp = 0;
-        this.hour = 0;
-        this.minute = 0;
-        this.second = 0;
+        this.mDays = 0;
+        this.mYear = 0;
+        this.mTimestamp = 0;
+        this.mHour = 0;
+        this.mMinute = 0;
+        this.mSecond = 0;
     }
 }
 
@@ -40,83 +40,83 @@ function UTCToTimeStamp(now) {
 class GTCDate extends EchoDate {
     constructor() {
         super();
-        this.type = 'GTC';
+        this.mType = 'GTC';
     }
 
     daysToGTCDate(days) {
-        let months = ['Geylet', 'Lyutet', 'Daylet', 'Elet', 'Veylet', 'Kreset', 'Heylet', 'Teylet', 'Ruyet', 'Listopat', 'Aylet', 'Beylet'];
-        let week = ["Niedila", "Poniedilek", "Wtorek", "Sroda", "Czwartek", "Pietek", "Sobota"];
+        let lMonths = ['Geylet', 'Lyutet', 'Daylet', 'Elet', 'Veylet', 'Kreset', 'Heylet', 'Teylet', 'Ruyet', 'Listopat', 'Aylet', 'Beylet'];
+        let lWeek = ["Niedila", "Poniedilek", "Wtorek", "Sroda", "Czwartek", "Pietek", "Sobota"];
         var dayOfWeek = days % 7;
-        let month;
+        let lMonth;
         if (days <= 31) {
-            month = months[0];
+            lMonth = lMonths[0];
         } else if (days >= 32 && days <= 61) {
-            month = months[1];
+            lMonth = lMonths[1];
             days = days - 31;
         } else if (days >= 62 && days <= 92) {
-            month = months[2];
+            lMonth = lMonths[2];
             days = days - 61;
         } else if (days >= 93 && days <= 123) {
-            month = months[3];
+            lMonth = lMonths[3];
             days = days - 92;
         } else if (days >= 124 && days <= 154) {
-            month = months[4];
+            lMonth = lMonths[4];
             days = days - 123;
         } else if (days >= 155 && days <= 185) {
-            month = months[5];
+            lMonth = lMonths[5];
             days = days - 154;
         } else if (days >= 186 && days <= 216) {
-            month = months[6];
+            lMonth = lMonths[6];
             days = days - 185;
         } else if (days >= 217 && days <= 247) {
-            month = months[7];
+            lMonth = lMonths[7];
             days = days - 216;
         } else if (days >= 248 && days <= 278) {
-            month = months[8];
+            lMonth = lMonths[8];
             days = days - 247;
         } else if (days >= 279 && days <= 309) {
-            month = months[9];
+            lMonth = lMonths[9];
             days = days - 278;
         } else if (days >= 310 && days <= 340) {
-            month = months[10];
+            lMonth = lMonths[10];
             days = days - 309;
         } else if (days >= 341 && days <= 371) {
-            month = months[11];
+            lMonth = lMonths[11];
             days = days - 340;
         }
 
-        return week[dayOfWeek] + ' ' + days + ' ' + month;
+        return lWeek[dayOfWeek] + ' ' + days + ' ' + lMonth;
     }
 
     getGTCDateString() {
-        return this.daysToGTCDate(this.days) + ' ' + this.year + ' à ' + compZero(this.hour) + ":" + compZero(this.minute) + ":" + compZero(this.second) + " GTC";
+        return this.daysToGTCDate(this.mDays) + ' ' + this.mYear + ' à ' + compZero(this.mHour) + ":" + compZero(this.mMinute) + ":" + compZero(this.mSecond) + " " + this.mType;
     }
 }
 
 function UTCDateToGTCDate(UTCdate) {
-    let date = new GTCDate();
-    let timestamp = UTCToTimeStamp(UTCdate);
-    date.year = Math.floor(timestamp / 34725600) + UTC_TO_GTC_YEAR + 1;
-    timestamp = timestamp % 34725600;
-    date.days = Math.floor(timestamp / 93600);
-    date.timestamp = timestamp % 93600;
-    date.hour = Math.floor(timestamp / 3600);
-    let min = date.timestamp % 3600;
-    date.minute = Math.floor(min / 60);
-    date.second = min % 60;
+    let lDate = new GTCDate();
+    let lTimestamp = UTCToTimeStamp(UTCdate);
+    lDate.mYear = Math.floor(lTimestamp / 34725600) + UTC_TO_GTC_YEAR + 1;
+    lTimestamp = lTimestamp % 34725600;
+    lDate.mDays = Math.floor(lTimestamp / 93600);
+    lDate.mTimestamp = lTimestamp % 93600;
+    lDate.mHour = Math.floor(lDate.mTimestamp / 3600);
+    let lMin = lDate.mTimestamp % 3600;
+    lDate.mMinute = Math.floor(lMin / 60);
+    lDate.mSecond = lMin % 60;
 
-    return date;
+    return lDate;
 }
 
 // Fonction d'affichage
 function afficheHeure() {
-    let date = new Date();
-    document.getElementById("UTC").innerHTML = date.toLocaleString("fr-FR", optionsDate);
-    let dateGTC = UTCDateToGTCDate(date);
-    document.getElementById("GTC").innerHTML = dateGTC.getGTCDateString();
-    var MIGYear = dateGTC.year + GTC_TO_MIG_YEAR;
-    document.getElementById("DTC").innerHTML = MIGDateToTC(MIGYear, dateGTC.days);
-    document.getElementById("TMC").innerHTML = MIGDateToDC(MIGYear, dateGTC.days, dateGTC.timestamp);
+    let lDate = new Date();
+    document.getElementById("UTC").innerHTML = lDate.toLocaleString("fr-FR", optionsDate);
+    let lDateGTC = UTCDateToGTCDate(lDate);
+    document.getElementById("GTC").innerHTML = lDateGTC.getGTCDateString();
+    var MIGYear = lDateGTC.mYear + GTC_TO_MIG_YEAR;
+    document.getElementById("DTC").innerHTML = MIGDateToTC(MIGYear, lDateGTC.mDays);
+    document.getElementById("TMC").innerHTML = MIGDateToDC(MIGYear, lDateGTC.mDays, lDateGTC.mTimestamp);
 }
 
 // lance affichage toutes les prochaines secondes
