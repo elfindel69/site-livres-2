@@ -37,7 +37,7 @@ function UTCToTimeStamp(now) {
     return ((now.getTime() - ZEROTIME.getTime()) / 1000).toFixed(0);
 }
 
-class GTCDate extends EchoDate {
+export class GTCDate extends EchoDate {
     constructor() {
         super();
         this.mType = 'GTC';
@@ -93,7 +93,7 @@ class GTCDate extends EchoDate {
     }
 }
 
-function UTCDateToGTCDate(UTCdate) {
+export function UTCDateToGTCDate(UTCdate) {
     let lDate = new GTCDate();
     let lTimestamp = UTCToTimeStamp(UTCdate);
     lDate.mYear = Math.floor(lTimestamp / 34725600) + UTC_TO_GTC_YEAR + 1;
