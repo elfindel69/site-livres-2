@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
 
     <title>Form conversion dates</title>
-    <script type="module" src="conv_dates.js"></script>
+    <script type="module" src="form_dates.js"></script>
 
 </head>
 
@@ -26,33 +26,34 @@
         <input name="dateGTC" id="dateGTC" type="text" placeholder="10211-01-01T00:00" />
         <br /><br />
 
-        <label for="dateCode">Date GTC :</label>
+        <label for="dateCode">Data Code :</label>
         <input name="dateCode" id="dateCode" type="text" placeholder="20211.001" />
         <br /><br />
 
-        <label for="timeCode">Date GTC :</label>
+        <label for="timeCode">Time Code :</label>
         <input name="timeCode" id="timeCode" type="text" placeholder="20211001.00000" />
         <br /><br />
 
-        <span id="convert">convert</span> <input type="reset" value="reset" />
+        <input type="submit" value="submit" /> <input type="reset" value="reset" /> <input type="button" id="convert" value="convert" />
     </form>
     <br/><br/>
+
     <ul>
         <li>
             Temps UTC
-            <div id="UTC">00</div>
+            <div id="UTCTime">00</div>
         </li>
         <li>
             Temps GTC
-            <div id="GTC"></div>
+            <div id="GTCTime"></div>
         </li>
         <li>
             Datacode
-            <div id="DTC"></div>
+            <div id="DTCTime"></div>
         </li>
         <li>
             Timecode
-            <div id="TMC"></div>
+            <div id="TMCTime"></div>
         </li>
     </ul>
 
