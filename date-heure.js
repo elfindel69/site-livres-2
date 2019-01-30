@@ -1,4 +1,10 @@
 "use strict";
+/**
+ * module d'horloge
+ * affiche l'heure des différentes capitales
+ * @author elfindel69
+ * @version 0.0.200
+ */
 exports.__esModule = true;
 var UTCDate_1 = require("./UTCDate");
 // Données d'affichage et de traitement

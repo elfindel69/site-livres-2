@@ -1,3 +1,10 @@
+/**
+ * module d'horloge
+ * affiche l'heure au format UTC, GTC et TimeCode
+ * @author elfindel69
+ * @version 0.0.200
+ */
+
 import { GTCDateToDC, GTCDateToTC} from './utils';
 
 import {optionsDate, UTCDateToGTCDate} from './UTCDate';

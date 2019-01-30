@@ -1,3 +1,9 @@
+/**
+ * module de date au format UTC
+ * @author elfindel69
+ * @version 0.0.200
+ */
+
 import {GTCDate} from './GTCDate';
 import {UTC_TO_GTC_YEAR} from './utils';
 

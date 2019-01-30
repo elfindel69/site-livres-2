@@ -1,4 +1,10 @@
 "use strict";
+/**
+ * module d'horloge
+ * affiche l'heure au format UTC, GTC et TimeCode
+ * @author elfindel69
+ * @version 0.0.200
+ */
 exports.__esModule = true;
 var utils_1 = require("./utils");
 var UTCDate_1 = require("./UTCDate");

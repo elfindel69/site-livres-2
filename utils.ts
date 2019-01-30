@@ -1,7 +1,15 @@
-export const UTC_TO_GTC_YEAR = 10211;
-export const GTC_TO_MIG_YEAR = 10000;
+/**
+ * module utilitaire
+ * @author elfindel69
+ * @version 0.0.200
+ */
 
-export class EchoDate {
+export {compZero, EchoDate, GTCDateToDC, GTCDateToTC, GTC_TO_MIG_YEAR, UTC_TO_GTC_YEAR}; 
+
+const UTC_TO_GTC_YEAR = 10211;
+const GTC_TO_MIG_YEAR = 10000;
+
+class EchoDate {
     mDays: number;
     mYear: number;
     mTimestamp: number;
@@ -19,9 +27,9 @@ export class EchoDate {
     }
 }
 
-export const GTCDateToTC = (GTCYear: number, days: number) => { return GTCYear + GTC_TO_MIG_YEAR + '.' + days; };
-export const GTCDateToDC = (GTCYear: number, days: number, timestamp: number) => { return GTCYear + GTC_TO_MIG_YEAR + '' + days + '.' + timestamp; };
+const GTCDateToTC = (GTCYear: number, days: number) => { return GTCYear + GTC_TO_MIG_YEAR + '.' + days; };
+const GTCDateToDC = (GTCYear: number, days: number, timestamp: number) => { return GTCYear + GTC_TO_MIG_YEAR + '' + days + '.' + timestamp; };
 
-export function compZero(nombre: number) {
+function compZero(nombre: number) {
     return nombre < 10 ? '0' + nombre : nombre;
 }

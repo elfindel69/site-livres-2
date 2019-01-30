@@ -1,4 +1,9 @@
 "use strict";
+/**
+ * module de conversions de dates
+ * @author elfindel69
+ * @version 0.0.200
+ */
 exports.__esModule = true;
 var UTCDate_1 = require("./UTCDate");
 var utils_1 = require("./utils");

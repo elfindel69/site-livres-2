@@ -1,3 +1,9 @@
+/**
+ * module de conversions de dates
+ * @author elfindel69
+ * @version 0.0.200
+ */
+
 import {optionsDate, UTCDateToGTCDate} from './UTCDate'
 import {GTCDateToDC, GTCDateToTC} from './utils';
 import { GTCDate } from './GTCDate';

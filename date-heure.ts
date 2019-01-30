@@ -1,3 +1,10 @@
+/**
+ * module d'horloge
+ * affiche l'heure des différentes capitales
+ * @author elfindel69
+ * @version 0.0.200
+ */
+
 import {optionsDate} from './UTCDate';
 
 // Données d'affichage et de traitement

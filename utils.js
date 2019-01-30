@@ -1,7 +1,14 @@
 "use strict";
+/**
+ * module utilitaire
+ * @author elfindel69
+ * @version 0.0.200
+ */
 exports.__esModule = true;
-exports.UTC_TO_GTC_YEAR = 10211;
-exports.GTC_TO_MIG_YEAR = 10000;
+var UTC_TO_GTC_YEAR = 10211;
+exports.UTC_TO_GTC_YEAR = UTC_TO_GTC_YEAR;
+var GTC_TO_MIG_YEAR = 10000;
+exports.GTC_TO_MIG_YEAR = GTC_TO_MIG_YEAR;
 var EchoDate = /** @class */ (function () {
     function EchoDate() {
         this.mDays = 0;
@@ -14,8 +21,10 @@ var EchoDate = /** @class */ (function () {
     return EchoDate;
 }());
 exports.EchoDate = EchoDate;
-exports.GTCDateToTC = function (GTCYear, days) { return GTCYear + exports.GTC_TO_MIG_YEAR + '.' + days; };
-exports.GTCDateToDC = function (GTCYear, days, timestamp) { return GTCYear + exports.GTC_TO_MIG_YEAR + '' + days + '.' + timestamp; };
+var GTCDateToTC = function (GTCYear, days) { return GTCYear + GTC_TO_MIG_YEAR + '.' + days; };
+exports.GTCDateToTC = GTCDateToTC;
+var GTCDateToDC = function (GTCYear, days, timestamp) { return GTCYear + GTC_TO_MIG_YEAR + '' + days + '.' + timestamp; };
+exports.GTCDateToDC = GTCDateToDC;
 function compZero(nombre) {
     return nombre < 10 ? '0' + nombre : nombre;
 }

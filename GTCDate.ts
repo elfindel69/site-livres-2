@@ -1,3 +1,9 @@
+/**
+ * module de date au format GTC
+ * @author elfindel69
+ * @version 0.0.200
+ */
+
 import {compZero, EchoDate} from './utils'
 
 export class GTCDate extends EchoDate {
