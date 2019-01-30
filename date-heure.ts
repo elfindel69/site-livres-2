@@ -1,6 +1,5 @@
-"use strict";
-exports.__esModule = true;
-var UTCDate_1 = require("./UTCDate");
+import {optionsDate} from './UTCDate';
+
 // Données d'affichage et de traitement
 var data = [
     { 'id': 'TFR', 'utc': 'America/Toronto' },
@@ -16,13 +15,17 @@ var data = [
     { 'id': 'OCN', 'utc': 'Pacific/Auckland' },
     { 'id': 'UTC', 'utc': 'UTC' }
 ];
+
+
 // Fonction d'affichage
 function afficheHeure() {
-    var i, nb = data.length, date = new Date();
+    let i: number,
+        nb = data.length,
+        date = new Date();
     // boucle sur les infos à afficher
     for (i = 0; i < nb; i += 1) {
-        UTCDate_1.optionsDate.timeZone = data[i].utc;
-        document.getElementById(data[i].id).innerHTML = date.toLocaleString('fr-FR', UTCDate_1.optionsDate);
+        optionsDate.timeZone = data[i].utc;
+        document.getElementById(data[i].id).innerHTML = date.toLocaleString('fr-FR', optionsDate);
     }
 }
 // lance affichage toutes les prochaines secondes

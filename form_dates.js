@@ -1,62 +1,39 @@
-import {
-    GTCDateToDC,
-    GTCDateToTC,
-    UTCDateToGTCDate
-} from './utils.js';
-
-var optionsDate = {
-    hour12: false,
-    weekday: 'long',
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    timeZoneName: 'short',
-    timeZone: 'UTC'
-};
-
+"use strict";
+exports.__esModule = true;
+var UTCDate_1 = require("./UTCDate");
+var utils_1 = require("./utils");
 var myForm = document.getElementById('myForm');
-
-myForm.addEventListener('reset', () => {
-    let inputs = document.querySelectorAll('input[type=text], input[type=password]');
-
-    let inputsLength = inputs.length;
+myForm.addEventListener('reset', function () {
+    var inputs = document.querySelectorAll('input[type=text]');
+    var inputsLength = inputs.length;
     for (var i = 0; i < inputsLength; i += 1) {
-        inputs[i].value = '';
+        inputs[i].nodeValue = '';
     }
 }, false);
-
 var elem = document.getElementById('convert');
-
 function afficheDates(UTCdate, GTCDate) {
-    document.getElementById("UTCTime").innerHTML = UTCdate.toLocaleString("fr-FR", optionsDate);
+    document.getElementById("UTCTime").innerHTML = UTCdate.toLocaleString("fr-FR", UTCDate_1.optionsDate);
     document.getElementById("GTCTime").innerHTML = GTCDate.getGTCDateString();
-    document.getElementById("DTCTime").innerHTML = GTCDateToTC(GTCDate.mYear, GTCDate.mDays);
-    document.getElementById("TMCTime").innerHTML = GTCDateToDC(GTCDate.mYear, GTCDate.mDays, GTCDate.mTimestamp);
+    document.getElementById("DTCTime").innerHTML = utils_1.GTCDateToTC(GTCDate.mYear, GTCDate.mDays);
+    document.getElementById("TMCTime").innerHTML = utils_1.GTCDateToDC(GTCDate.mYear, GTCDate.mDays, GTCDate.mTimestamp);
 }
-
 function convert() {
-    let lUTCTime = document.getElementById('dateUTC').value;
-    let lGTCTime = document.getElementById('dateGTC').value;
-    if (lUTCTime === "") {
-        lUTCTime = new Date();
+    var lGTCTime = document.getElementById('dateGTC').nodeValue;
+    var lUTCTime = document.getElementById('dateUTC').nodeValue;
+    var lUTCDate;
+    var lGTCDate;
+    if (lUTCTime !== "") {
+        lUTCDate = new Date(lUTCTime);
     }
     if (lGTCTime === "") {
-        lGTCTime = UTCDateToGTCDate(lUTCTime);
+        lGTCDate = UTCDate_1.UTCDateToGTCDate(lUTCDate);
     }
-
-    afficheDates(lUTCTime, lGTCTime);
-
+    afficheDates(lUTCDate, lGTCDate);
 }
-
 elem.onclick = convert;
-
 function afficheDate() {
-    let lUTCTime = new Date();
-    let lGTCTime = UTCDateToGTCDate(lUTCTime);
+    var lUTCTime = new Date();
+    var lGTCTime = UTCDate_1.UTCDateToGTCDate(lUTCTime);
     afficheDates(lUTCTime, lGTCTime);
 }
-
 afficheDate();
