@@ -19,18 +19,14 @@
         <input name="dateGTC" id="dateGTC" type="text" placeholder="10211-01-01T00:00" />
         <br /><br />
 
-        <label for="dateCode">Date GTC :</label>
-        <input name="dateCode" id="dateCode" type="text" placeholder="20211.001" />
-        <br /><br />
-
-        <label for="timeCode">Date GTC :</label>
+        <label for="timeCode">timeCode :</label>
         <input name="timeCode" id="timeCode" type="text" placeholder="20211001.00000" />
         <br /><br />
 
-        <span id="convert">convert</span> <input type="reset" value="reset" />
+        <input type="button" id="convert" value="convert" /> <input type="reset" value="reset" />
     </form>
     <br /><br />
-    <ul>
+    <ul id="ul">
         <li>
             Temps UTC
             <div id="UTC">00</div>
@@ -38,10 +34,6 @@
         <li>
             Temps GTC
             <div id="GTC"></div>
-        </li>
-        <li>
-            Datacode
-            <div id="DTC"></div>
         </li>
         <li>
             Timecode

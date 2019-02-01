@@ -13,7 +13,7 @@ function afficheHeure() {
     document.getElementById("UTC").innerHTML = lDate.getUTCTimeString();
     let lDateGTC = lDate.UTCDateToGTCDate();
     document.getElementById("GTC").innerHTML = lDateGTC.getGTCTimeString();
-    document.getElementById("DTC").innerHTML = lDateGTC.GTCDateToTC();
+    document.getElementById("TMC").innerHTML = lDateGTC.GTCDateToTC();
 }
 
 // lance affichage toutes les prochaines secondes

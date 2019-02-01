@@ -4,22 +4,42 @@
  * @version 0.0.200
  */
 
-import { UTCDate } from './classes/UTCDate';
+import { GTCDate, TimeStringToGTCDate } from './classes/GTCDate.js';
+import { UTCDate } from './classes/UTCDate.js';
+
 
 function convert() {
-    let lUTCTime = document.getElementById('dateUTC').value;
+    let lLocalTime = document.getElementById('dateUTC').value;
+    let lGTCTime = document.getElementById('dateGTC').value;
+    let lTMCTime = document.getElementById('timeCode').value;
 
-    let lGTCTime = UTCDateToGTCDate(lUTCTime);
-    document.getElementById("GTC").innerHTML = lGTCTime.getGTCDateString();
+    let lUTCDate = new UTCDate();
+    let lGTCDate = new GTCDate();
+
+    if (lLocalTime !== '' && lGTCTime === '' && lTMCTime === '') {
+        let UTCTime = lLocalTime + 'Z';
+        lUTCDate.mDate = new Date(UTCTime);
+        lGTCDate = lUTCDate.UTCDateToGTCDate();
+    } else if (lLocalTime === '' && lGTCTime !== '' && lTMCTime === '') {
+        lGTCDate = TimeStringToGTCDate(lGTCTime);
+        lUTCDate = lGTCDate.GTCDateToUTCDate();
+    }
+
+    document.getElementById("ul").style.display = 'block';
+    document.getElementById("UTC").innerHTML = lUTCDate.getUTCTimeString();
+    document.getElementById("GTC").innerHTML = lGTCDate.getGTCTimeString();
+    document.getElementById("TMC").innerHTML = lGTCDate.GTCDateToTC();
 
 }
 
 // Utilisation d'une IIFE pour éviter les variables globales.
-() => {
+function show() {
+    document.getElementById("ul").style.display = 'none';
+
     var myForm = document.getElementById('myForm');
 
     myForm.addEventListener('reset', () => {
-        let inputs = document.querySelectorAll('input[type=text]]');
+        let inputs = document.querySelectorAll('input[type="text"]');
 
         let inputsLength = inputs.length;
         for (var i = 0; i < inputsLength; i += 1) {
@@ -28,8 +48,7 @@ function convert() {
     }, false);
 
     var element = document.getElementById('convert');
+    element.addEventListener("click", convert);
+}
 
-
-    element.onclick = convert();
-
-}();
+show();

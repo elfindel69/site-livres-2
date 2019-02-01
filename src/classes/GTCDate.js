@@ -4,13 +4,39 @@
  * @version 0.0.200
  */
 
-import { GTC_TO_MIG_YEAR, compZero } from './Utils.js';
+import { GTC_TO_MIG_YEAR, UTC_TO_GTC_YEAR, compZero } from './Utils.js';
+import { UTCDate } from './UTCDate.js';
+
+function compDoubleZero(number) {
+    let res = number;
+    if (number < 10) {
+        res = '00' + number;
+    } else if (number >= 10 && number < 100) {
+        res = '0' + number;
+    }
+    return res;
+}
+
+function compFiveZeros(number) {
+    let res = number;
+    if (number < 10) {
+        res = '0000' + number;
+    } else if (number >= 10 && number < 100) {
+        res = '000' + number;
+    } else if (number >= 100 && number < 1000) {
+        res = '00' + number;
+    } else if (number >= 1000 && number < 10000) {
+        res = '0' + number;
+
+    }
+    return res;
+}
 
 export class GTCDate {
 
 
     constructor() {
-        this.mDays = 0;
+        this.mDays = 1;
         this.mYear = 0;
         this.mTimestamp = 0;
         this.mHour = 0;
@@ -22,7 +48,7 @@ export class GTCDate {
     daysToGTCDate() {
         let lMonths = ['Geylet', 'Lyutet', 'Daylet', 'Elet', 'Veylet', 'Kreset', 'Heylet', 'Teylet', 'Ruyet', 'Listopat', 'Aylet', 'Beylet'];
         let lWeek = ["Niedila", "Poniedilek", "Wtorek", "Sroda", "Czwartek", "Pietek", "Sobota"];
-        let days = this.mDays;
+        let days = this.mDays > 0 ? this.mDays : 1;
         var dayOfWeek = days % 7;
         let lMonth = '0';
         if (days <= 31) {
@@ -69,5 +95,48 @@ export class GTCDate {
         return this.daysToGTCDate(this.mDays) + ' ' + this.mYear + ' à ' + compZero(this.mHour) + ":" + compZero(this.mMinute) + ":" + compZero(this.mSecond) + " " + this.mType;
     }
 
-    GTCDateToTC() { return this.mYear + GTC_TO_MIG_YEAR + '' + this.mDays + '.' + this.mTimestamp; }
+    GTCDateToTC() {
+        return this.mYear + GTC_TO_MIG_YEAR + '' + compDoubleZero(this.mDays) + '.' + compFiveZeros(this.mTimestamp);
+    }
+
+    GTCDateToUTCDate() {
+        var UTCYear = this.mYear - UTC_TO_GTC_YEAR;
+        var offsetYear = UTCYear * 34725600;
+        var offsetDays = (this.mDays - 1) * 93600;
+        var GTCTimestamp = (offsetYear + offsetDays + this.mTimestamp) * 1000;
+        var UTCTimestamp = 1293840000000;
+        if (this.mYear >= 10211) {
+            UTCTimestamp += GTCTimestamp;
+        }
+        var date = new UTCDate();
+        date.mDate = new Date(UTCTimestamp);
+
+        return date;
+    }
+
+}
+
+export function TimeStringToGTCDate(time) {
+    var timeArray = time.split(new RegExp('T', 'u'));
+    var dateArray = timeArray[0].split(new RegExp('-', 'u'));
+
+    var month = dateArray[1];
+    var monthsArray = [0, 31, 61, 92, 123, 154, 185, 216, 247, 278, 309, 340];
+
+    var hourArray = timeArray[1].split(new RegExp(':', 'u'));
+
+    var date = new GTCDate();
+    date.mYear = Number(dateArray[0]);
+    var day = Number(dateArray[2]);
+    var offset = monthsArray[Number(month) - 1];
+    date.mDays = day + offset;
+
+    date.mHour = Number(hourArray[0]);
+    date.mMinute = Number(hourArray[1]);
+    date.mSecond = Number(hourArray[2]);
+
+    var offsetHour = date.mHour * 3600;
+    var offsetMin = date.mMinute * 60;
+    date.mTimestamp = offsetHour + offsetMin + date.mSecond;
+    return date;
 }
