@@ -4,20 +4,27 @@
  * @version 0.0.200
  */
 
-import {compZero, EchoDate} from './utils'
+import { GTC_TO_MIG_YEAR, compZero } from './Utils.js';
 
-export class GTCDate extends EchoDate {
-    mType: string;
+export class GTCDate {
+
+
     constructor() {
-        super();
+        this.mDays = 0;
+        this.mYear = 0;
+        this.mTimestamp = 0;
+        this.mHour = 0;
+        this.mMinute = 0;
+        this.mSecond = 0;
         this.mType = 'GTC';
     }
 
-    daysToGTCDate(days: number) {
+    daysToGTCDate() {
         let lMonths = ['Geylet', 'Lyutet', 'Daylet', 'Elet', 'Veylet', 'Kreset', 'Heylet', 'Teylet', 'Ruyet', 'Listopat', 'Aylet', 'Beylet'];
         let lWeek = ["Niedila", "Poniedilek", "Wtorek", "Sroda", "Czwartek", "Pietek", "Sobota"];
+        let days = this.mDays;
         var dayOfWeek = days % 7;
-        let lMonth: string;
+        let lMonth = '0';
         if (days <= 31) {
             lMonth = lMonths[0];
         } else if (days >= 32 && days <= 61) {
@@ -58,7 +65,9 @@ export class GTCDate extends EchoDate {
         return lWeek[dayOfWeek] + ' ' + days + ' ' + lMonth;
     }
 
-    getGTCDateString() {
+    getGTCTimeString() {
         return this.daysToGTCDate(this.mDays) + ' ' + this.mYear + ' à ' + compZero(this.mHour) + ":" + compZero(this.mMinute) + ":" + compZero(this.mSecond) + " " + this.mType;
     }
+
+    GTCDateToTC() { return this.mYear + GTC_TO_MIG_YEAR + '' + this.mDays + '.' + this.mTimestamp; }
 }

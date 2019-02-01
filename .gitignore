@@ -75,9 +75,4 @@ typings/
 # FuseBox cache
 .fusebox/
 
-# transpiled js
-*.js
-# legacy
-conv_dates.js
-date-heure.js
 

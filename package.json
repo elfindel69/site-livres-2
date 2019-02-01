@@ -2,7 +2,7 @@
     "name": "foo",
     "version": "1.0.0",
     "description": "bar",
-    "main": "lib/form_dates.js",
+    "main": "src/date_heure.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -11,15 +11,5 @@
         "url": "master"
     },
     "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "@types/node": "^10.12.19",
-        "commonjs": "0.0.1",
-        "commonjs-require": "^1.4.6",
-        "commonjs-utils": "^0.1.1",
-        "webpack": "^4.29.0"
-    },
-    "devDependencies": {
-        "@types/jquery": "^3.3.29"
-    }
+    "license": "ISC"
 }

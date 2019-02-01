@@ -1,11 +1,11 @@
+import { UTCDate } from "./classes/UTCDate.js";
+
 /**
  * module d'horloge
  * affiche l'heure des différentes capitales
  * @author elfindel69
  * @version 0.0.200
  */
-
-import {optionsDate} from './UTCDate';
 
 // Données d'affichage et de traitement
 var data = [
@@ -22,17 +22,13 @@ var data = [
     { 'id': 'OCN', 'utc': 'Pacific/Auckland' },
     { 'id': 'UTC', 'utc': 'UTC' }
 ];
-
-
 // Fonction d'affichage
 function afficheHeure() {
-    let i: number,
-        nb = data.length,
-        date = new Date();
+
     // boucle sur les infos à afficher
-    for (i = 0; i < nb; i += 1) {
-        optionsDate.timeZone = data[i].utc;
-        document.getElementById(data[i].id).innerHTML = date.toLocaleString('fr-FR', optionsDate);
+    for (var i = 0; i < data.length; i += 1) {
+        var date = new UTCDate(data[i].utc);
+        document.getElementById(data[i].id).innerHTML = date.getUTCTimeString();
     }
 }
 // lance affichage toutes les prochaines secondes
