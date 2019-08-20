@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Form scores</title>
+
+    <script type="module" src="classes/scores.js"></script>
+</head>
+
+<body>
+    <form id="myForm">
+
+        <label for="pays1">pts Pays 1 :</label>
+        <input name="pays1" id="pts1" type="number" placeholder="0" />
+        <br /><br />
+
+        <label for="pays2">pts Pays 2 :</label>
+        <input name="pays2" id="pts2" type="number" placeholder="0" />
+        <br /><br />
+
+        <input type="button" id="convert" value="convert" /> <input type="reset" value="reset" />
+    </form>
+    <br /><br />
+    <ul id="ul">
+        <li>
+            Score 1
+            <div id="score1"></div>
+        </li>
+        <li>
+            Score 2
+            <div id="score2"></div>
+        </li>
+    </ul>
+
+</body>
+
+</html>
