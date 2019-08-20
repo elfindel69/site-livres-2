@@ -32,6 +32,15 @@ function compFiveZeros(number) {
     return res;
 }
 
+/* function yearOffset(date) {
+    let ZERO_DATE_UTC = 2011;
+    let zeroOffset = Math.floor(ZERO_DATE_UTC / 4) - Math.floor(ZERO_DATE_UTC / 100) + Math.floor(ZERO_DATE_UTC / 400);
+    let dateOffset = Math.floor(date / 4) - Math.floor(date / 100) + Math.floor(date / 400);
+
+    return zeroOffset - dateOffset;
+
+}*/
+
 export class GTCDate {
 
 
@@ -102,12 +111,25 @@ export class GTCDate {
     GTCDateToUTCDate() {
         var UTCYear = this.mYear - UTC_TO_GTC_YEAR;
         var offsetYear = UTCYear * 34725600;
-        var offsetDays = (this.mDays - 1) * 93600;
-        var GTCTimestamp = (offsetYear + offsetDays + this.mTimestamp) * 1000;
-        var UTCTimestamp = 1293840000000;
+        var offsetDays = this.mDays * 93600;
+        var GTCTimestamp = 0;
         if (this.mYear >= 10211) {
-            UTCTimestamp += GTCTimestamp;
+            offsetDays -= 93600;
+            GTCTimestamp = (offsetYear + offsetDays + this.mTimestamp) * 1000;
+        } else {
+            offsetYear += 34725600;
+            offsetDays -= 34725600;
+            var offsetSec = 0;
+            if (this.mTimestamp > 0) {
+                offsetSec = 93600 - this.mTimestamp;
+            }
+            GTCTimestamp = (offsetYear + offsetDays + offsetSec) * 1000;
+            if (GTCTimestamp > 0) {
+                GTCTimestamp *= -1;
+            }
         }
+        var UTCTimestamp = 1293840000000;
+        UTCTimestamp += GTCTimestamp;
         var date = new UTCDate();
         date.mDate = new Date(UTCTimestamp);
 
@@ -133,7 +155,11 @@ export function TimeStringToGTCDate(time) {
 
     date.mHour = Number(hourArray[0]);
     date.mMinute = Number(hourArray[1]);
-    date.mSecond = Number(hourArray[2]);
+    if (hourArray.length === 3) {
+        date.mSecond = Number(hourArray[2]);
+    } else if (hourArray.length === 2) {
+        date.mSecond = 0;
+    }
 
     var offsetHour = date.mHour * 3600;
     var offsetMin = date.mMinute * 60;

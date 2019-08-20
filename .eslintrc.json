@@ -122,7 +122,7 @@
         "max-statements-per-line": "off",
         "multiline-comment-style": [
             "error",
-            "separate-lines"
+            "bare-block"
         ],
         "new-parens": "error",
         "newline-after-var": "off",
