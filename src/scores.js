@@ -1,6 +1,6 @@
 // /Module scores
 
-function convert() {
+function convert_s() {
     let pts1 = document.getElementById('pts1').value;
     let pts2 = document.getElementById('pts2').value;
     var score1 = 0;
