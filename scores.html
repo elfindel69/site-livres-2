@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Form scores</title>
+    <script type="module" src="src/affScores.js"></script>
+</head>
+
+<body>
+    <form id="myForm">
+        <label for="pays1">Pays 1 :</label>
+        <input name="pays1" id="pays1" type="text" placeholder="FRA" />
+        <br /><br />
+        <label for="pts1">pts Pays 1 :</label>
+        <input name="pts1" id="pts1" type="number" placeholder="184" />
+        <br /><br />
+
+        <label for="pays2">Pays 2 :</label>
+        <input name="pays2" id="pays2" type="text" placeholder="ITA" />
+        <br /><br />
+        <label for="pts2">pts Pays 2 :</label>
+        <input name="pts2" id="pts2" type="number" placeholder="81" />
+        <br /><br />
+
+        <input type="button" id="affScore" value="score !" /> <input type="reset" value="reset" />
+    </form>
+    <br /><br />
+    <ul id="ul">
+        <li>
+            Pays 1
+            <div id="ct1"></div>
+        </li>
+        <li>
+            Score 1
+            <div id="score1"></div>
+        </li>
+        <li>
+            Pays 2
+            <div id="ct2"></div>
+        </li>
+        <li>
+            Score 2
+            <div id="score2"></div>
+        </li>
+    </ul>
+
+</body>
+
+</html>
