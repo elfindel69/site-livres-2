@@ -40,11 +40,15 @@ export function calculScores(pts1, pts2) {
     let rng1 = getRng(pts1);
     let rng2 = getRng(pts2);
 
-    score1 = (Math.random() * rng1 * 5) + (Math.random() * rng1 * 2);
+    const SCORES5 = (rng) => { return Math.random() * rng * 5; };
+    const SCORES2 = (rng) => { return Math.random() * rng * 2; };
+    Math.random();
+
+    score1 = SCORES5(rng1) + SCORES2(rng1);
     score1 = fixScores(score1);
 
     Math.random();
-    score2 = (Math.random() * rng2 * 5) + (Math.random() * rng2 * 2);
+    score2 = SCORES5(rng2) + SCORES2(rng2);
     score2 = fixScores(score2);
 
     let scores = new Scores(score1, score2);
