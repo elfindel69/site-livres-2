@@ -34,7 +34,7 @@ function getRng(pts) {
     return rng;
 }
 
-export function calculScores(pts1, pts2) {
+export function calcScores(pts1, pts2) {
     var score1 = 0;
     var score2 = 0;
     let rng1 = getRng(pts1);

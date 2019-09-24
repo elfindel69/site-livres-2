@@ -1,5 +1,5 @@
 import { Country } from "./classes/countries";
-import { calculScores } from "./calcScores";
+import { calcScores } from "./calcScores";
 
 /**
  * Module d'affichage de scores
@@ -26,7 +26,7 @@ function runScores() {
     var Ct1 = new Country(ct1, pts1, 0);
     var Ct2 = new Country(ct2, pts2, 0);
 
-    let scores = calculScores(pts1, pts2);
+    let scores = calcScores(pts1, pts2);
     Ct1.scores = scores.score1;
     Ct2.scores = scores.score2;
     showScores(scores);
