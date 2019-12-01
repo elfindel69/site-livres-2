@@ -1,11 +1,12 @@
-import { Country } from "./classes/countries";
-import { calcScores } from "./calcScores";
-
 /**
  * Module d'affichage de scores
  * @author elfindel69
  * @version 0.2.0
  */
+
+import { Country } from "./classes/countries";
+import { calcScores } from "./calcScores";
+
 
 // Affichage des nouveaux scores
 function showScores(Ct1, Ct2) {
@@ -35,7 +36,7 @@ function runScores() {
 // Pré-affichage et ajout listener.
 function show() {
     var myForm = document.getElementById('myForm');
-    var element = document.getElementById('affScore');
+    var element = document.getElementById('runScores');
     document.getElementById("ul").style.display = 'none';
 
 
