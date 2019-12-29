@@ -4,8 +4,8 @@
  * @version 0.2.0
  */
 
-import { Country } from "./classes/countries";
-import { calcScores } from "./calcScores";
+import { Country } from "./classes/countries.js";
+import { calcScores } from "./calcScores.js";
 
 
 // Affichage des nouveaux scores
@@ -30,7 +30,7 @@ function runScores() {
     let scores = calcScores(pts1, pts2);
     Ct1.scores = scores.score1;
     Ct2.scores = scores.score2;
-    showScores(scores);
+    showScores(Ct1, Ct2);
 }
 
 // Pré-affichage et ajout listener.
