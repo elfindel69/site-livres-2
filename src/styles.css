@@ -85,9 +85,7 @@ header {
 
 #txt_body,
 form {
-    position: absolute;
-    top: 20%;
-    left: 13%;
+    position: relative;
     text-align: center;
     margin: auto;
     margin-bottom: 5px;
@@ -140,10 +138,12 @@ ul {
     top: 65%;
 }
 
+img {
+    width: 125px;
+}
+
 footer {
-    position: absolute;
-    top: 1020px;
-    left: 28%;
+    position: relative;
     text-align: center;
     margin: auto;
     margin-bottom: 5px;
