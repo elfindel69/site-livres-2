@@ -1,4 +1,4 @@
-import { Scores } from "./classes/Scores.js";
+import Scores from "./classes/Scores.js";
 
 function fixScores(pScore) {
     let rScore = 0;

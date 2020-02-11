@@ -1,8 +1,8 @@
 export class Country {
 
-    constructor(name, oldPts, scores) {
+    constructor(name, oldPts, score) {
         this.name = name;
         this.oldPts = oldPts;
-        this.scores = scores;
+        this.score = score;
     }
 }

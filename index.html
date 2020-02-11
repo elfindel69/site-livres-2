@@ -4,14 +4,34 @@
 <head>
     <title></title>
     <meta charset="utf-8" />
-    <title>Titre</title>
+    <title>Home</title>
     <meta name="content-language" content="fr">
     <meta name="robots" content="index,all">
     <script type="module" src="src/date_heure.js"></script>
+    <link rel="stylesheet" href="src/styles.css" />
 </head>
 
 <body>
-    <ul>
+
+    <nav>
+        <ul>
+            <li class="border"><a href="dates.html"> dates</a></li>
+            <li class="border"><a href="form-dates.html"> form dates</a></li>
+            <li class="border"> <a href="scores.html"> scores</a></li>
+            <li class="border"><a href="points.html"> points </a></li>
+            <li class="border">Countries
+                <ul>
+                    <li><a href="federation.html">TF</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html"> home </a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Project Echo</h1>
+    </header>
+
+    <ul id="txt_body">
         <li>
             Ottawa (capitale Fédérale)
             <div id="TFR">00</div>
@@ -61,6 +81,9 @@
             <div id="UTC"></div>
         </li>
     </ul>
+    <footer>
+        <span>Design by elfindel69</span> | <span>&copy; Cat with glasses inc., 2020</span>
+    </footer>
 </body>
 
 </html>

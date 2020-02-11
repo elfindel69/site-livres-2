@@ -11,9 +11,9 @@ import { calcScores } from "./calcScores.js";
 // Affichage des nouveaux scores
 function showScores(Ct1, Ct2) {
     document.getElementById("ul").style.display = 'block';
-    document.getElementById("ct1").innerHTML = Ct1.code;
+    document.getElementById("ct1").innerHTML = Ct1.name;
     document.getElementById("score1").innerHTML = Ct1.score;
-    document.getElementById("ct2").innerHTML = Ct2.code;
+    document.getElementById("ct2").innerHTML = Ct2.name;
     document.getElementById("score2").innerHTML = Ct2.score;
 }
 
@@ -28,8 +28,8 @@ function runScores() {
     var Ct2 = new Country(ct2, pts2, 0);
 
     let scores = calcScores(pts1, pts2);
-    Ct1.scores = scores.score1;
-    Ct2.scores = scores.score2;
+    Ct1.score = scores.score1;
+    Ct2.score = scores.score2;
     showScores(Ct1, Ct2);
 }
 
@@ -50,6 +50,7 @@ function show() {
         for (let cpt = 0; cpt < inputsLength; cpt += 1) {
             inputs[cpt].value = '';
         }
+        document.getElementById("ul").style.display = 'none';
     }, false);
 
 

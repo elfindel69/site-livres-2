@@ -9,7 +9,7 @@ import { calcPoints } from "./calcPoints.js";
 
 // Affichage des nouveaux scores
 function showPoints(Ct1, Ct2) {
-    document.getElementById("ul").style.display = 'block';
+    document.getElementById("ul_pts").style.display = 'block';
     document.getElementById("ct1").innerHTML = Ct1.name;
     document.getElementById("newPts1").innerHTML = Ct1.oldPts;
     document.getElementById("ct2").innerHTML = Ct2.name;
@@ -43,7 +43,7 @@ function runPoints() {
 function show() {
     var myForm = document.getElementById('myForm');
     var element = document.getElementById('runPoints');
-    document.getElementById("ul").style.display = 'none';
+    document.getElementById("ul_pts").style.display = 'none';
 
 
     myForm.addEventListener('reset', () => {
@@ -56,6 +56,7 @@ function show() {
         for (let cpt = 0; cpt < inputsLength; cpt += 1) {
             inputs[cpt].value = '';
         }
+        document.getElementById("ul_pts").style.display = 'none';
     }, false);
 
 

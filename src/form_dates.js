@@ -45,6 +45,8 @@ function show() {
         for (var i = 0; i < inputsLength; i += 1) {
             inputs[i].value = '';
         }
+        document.getElementById("ul").style.display = 'none';
+
     }, false);
 
     var element = document.getElementById('convert');
