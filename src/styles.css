@@ -14,9 +14,43 @@ nav {
     padding-top: 10px;
 }
 
-nav li {
+nav ul li {
+    color: white;
     display: inline;
     list-style: none;
+    position: relative;
+}
+
+.deroulant>a::after {
+    content: "▼";
+    font-size: 12px;
+    color: white;
+}
+
+.sous {
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: white;
+    color: navy;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1000;
+}
+
+.deroulant:hover .sous {
+    display: block;
+}
+
+.sous li {
+    position: relative;
+    width: 100%;
+    text-align: left;
+}
+
+.sous a {
+    color: navy;
 }
 
 .border {
@@ -107,7 +141,7 @@ ul {
 
 footer {
     position: absolute;
-    bottom: 2%;
+    top: 1020px;
     left: 28%;
     text-align: center;
     margin: auto;
