@@ -5,6 +5,7 @@
  */
 
 import { GTCDate, TimeStringToGTCDate } from './classes/GTCDate.js';
+import { TimeCodeToGTCDate } from './TimeCodeToGTCDate.js';
 import { UTCDate } from './classes/UTCDate.js';
 
 
@@ -22,6 +23,9 @@ function convert() {
         lGTCDate = lUTCDate.UTCDateToGTCDate();
     } else if (lLocalTime === '' && lGTCTime !== '' && lTMCTime === '') {
         lGTCDate = TimeStringToGTCDate(lGTCTime);
+        lUTCDate = lGTCDate.GTCDateToUTCDate();
+    } else if (lLocalTime === '' && lGTCTime === '' && lTMCTime !== '') {
+        lGTCDate = TimeCodeToGTCDate(lTMCTime);
         lUTCDate = lGTCDate.GTCDateToUTCDate();
     }
 
