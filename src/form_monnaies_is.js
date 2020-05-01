@@ -4,10 +4,10 @@
  * @version 0.0.200
  */
 
-
+import { ISCurrencyToEuros, rublesToEuros } from './curr_to_eur.js';
 import { ISCurrencyToRub, eurosToRubles } from './cur_to_rub.js';
 import { eurosToISCurrency, rublesToISCurrency } from './curr_to_IS.js';
-import { ISCurrencyToEuros, rublesToEuros } from './curr_to_eur.js';
+
 
 function strToTabIS(sIS) {
     let tab = sIS.split(' ');

@@ -4,42 +4,8 @@
  * @version 0.0.200
  */
 
-import { GTC_TO_MIG_YEAR, UTC_TO_GTC_YEAR, compZero } from './Utils.js';
+import { GTC_TO_MIG_YEAR, UTC_TO_GTC_YEAR, compDoubleZero, compFiveZeros, compZero } from './Utils.js';
 import { UTCDate } from './UTCDate.js';
-
-function compDoubleZero(number) {
-    let res = number;
-    if (number < 10) {
-        res = '00' + number;
-    } else if (number >= 10 && number < 100) {
-        res = '0' + number;
-    }
-    return res;
-}
-
-function compFiveZeros(number) {
-    let res = number;
-    if (number < 10) {
-        res = '0000' + number;
-    } else if (number >= 10 && number < 100) {
-        res = '000' + number;
-    } else if (number >= 100 && number < 1000) {
-        res = '00' + number;
-    } else if (number >= 1000 && number < 10000) {
-        res = '0' + number;
-
-    }
-    return res;
-}
-
-/* function yearOffset(date) {
-    let ZERO_DATE_UTC = 2011;
-    let zeroOffset = Math.floor(ZERO_DATE_UTC / 4) - Math.floor(ZERO_DATE_UTC / 100) + Math.floor(ZERO_DATE_UTC / 400);
-    let dateOffset = Math.floor(date / 4) - Math.floor(date / 100) + Math.floor(date / 400);
-
-    return zeroOffset - dateOffset;
-
-}*/
 
 export class GTCDate {
 
