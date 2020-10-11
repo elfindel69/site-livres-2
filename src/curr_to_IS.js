@@ -28,16 +28,24 @@ export function rublesToISCurrency(ruble) {
     let ses = 0.0;
     let temp = 0.0;
 
-    let res1 = ruble / 1.43;
+    let div1 = new myDiv();
+    let res1 = div1.div(ruble, 1.43);
     aur = res1.quot;
     temp = res1.rest;
 
     let res2 = temp * 20;
     den = Math.floor(res2);
+    if (den > 19) {
+        aur += 1;
+        den -= 20;
+    }
     temp = res2 % 1;
 
     ses = Math.trunc(temp * 12);
-
+    if (ses > 11) {
+        den += 1;
+        ses -= 12;
+    }
     let tabIS = [aur, den, ses];
 
     return tabIS;
